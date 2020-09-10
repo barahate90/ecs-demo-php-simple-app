@@ -4,6 +4,7 @@ artifacts:
 phases: 
   build: 
     commands: 
+      - echo "${IMAGE_URI}"
       - docker build --tag ${IMAGE_URI} .
   post_build: 
     commands: 
