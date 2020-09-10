@@ -4,8 +4,8 @@ artifacts:
 phases: 
   build: 
     commands: 
-      - echo "${IMAGE_URI}"
-      - docker build --tag ${IMAGE_URI} .
+      - "echo \"${IMAGE_URI}\""
+      - "docker build --tag $IMAGE_URI ."
   post_build: 
     commands: 
       - "docker push \"$IMAGE_URI\""
@@ -15,5 +15,6 @@ phases:
       - "$(aws ecr get-login --no-include-email)"
       - "TAG=\"$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)\""
       - "IMAGE_URI=\"${REPOSITORY_URI}:${TAG}\""
+      - "echo \"${IMAGE_URI}\""
 version: 0.2
 
